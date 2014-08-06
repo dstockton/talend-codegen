@@ -13,8 +13,7 @@ Build:
 > make
 
 #ls in the out directory
->ls jar/
-talend-codegen_5.5.1.jar
+>ls jar/talend-codegen_5.5.1.jar
 
 #build an older version
 >make build_jar_5.4.1
