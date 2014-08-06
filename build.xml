@@ -38,7 +38,7 @@
         </javac>
 
         <zip destfile="build/org.talend.core.ui.jar">
-            <zipfileset src="lib/5.4.1/org.talend.core.ui_5.4.1.r111943.jar">
+            <zipfileset src="lib/${talend_version}/org.talend.core.ui_${talend_version}.r${talend_revision}.jar">
                 <include name="org/**" />
             </zipfileset> 
         </zip>
