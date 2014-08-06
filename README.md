@@ -71,7 +71,7 @@ export COMPONENTDIR=/home/projectname/custom_components
 
 cp $PROJECTDIR/libs/* /home/TOS_DI-r118616-V5.5.1/lib/java/
 
-/home/TOS_DI-r118616-V5.5.1/TOS_DI-linux-gtk-x86_64 -data $WORKSPACE -application au.org.emii.talend.codegen.Generator -jobName $JOBNAME -projectDir $PROJECTDIR -targetDir $TARGETDIR -componentDir $COMPONENTDIR
+/home/TOS_DI-r118616-V5.5.1/TOS_DI-linux-gtk-x86_64 -nosplash --launcher.suppressErrors -data $WORKSPACE -application au.org.emii.talend.codegen.Generator -jobName $JOBNAME -projectDir $PROJECTDIR -targetDir $TARGETDIR -componentDir $COMPONENTDIR
 ``` 
 
 
