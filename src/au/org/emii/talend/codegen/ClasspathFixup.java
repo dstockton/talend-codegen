@@ -39,7 +39,7 @@ public class ClasspathFixup {
             ZipToFile.unZipFile(zipFile, tmpFolder);
             // build new jar
             for (ExportFileResource process : processes) {
-                if (process != null) {
+                if (process != null && process.getDirectoryName() != null) {
                     String jobFolderName = process.getDirectoryName();
                     int pos = jobFolderName.indexOf("/"); //$NON-NLS-1$
                     if (pos != -1) {
@@ -58,10 +58,10 @@ public class ClasspathFixup {
                 // rezip the tmpFolder to zipFile
                 ZipToFile.zipFile(tmpFolder, destinationZipFile);
             } else {
-                System.out.println("Can not create a file or have not the permission to create a file! Does teh destination directory exist?");
+                System.out.println("Can not create a file or have not the permission to create a file! Does the destination directory exist?");
             }
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            System.out.println("" + e);
         } finally {
             JavaJobExportReArchieveCreator.deleteTempFiles();
             JavaJobExportReArchieveCreator.deleteTempDestinationFiles();
@@ -81,6 +81,7 @@ public class ClasspathFixup {
         File disZipFile = new File(disZipFileStr);
         if (!disZipFile.exists()) {
             try {
+                disZipFile.getParentFile().mkdirs();
                 disZipFile.createNewFile();
             } catch (IOException e) {
                 flag = false;
