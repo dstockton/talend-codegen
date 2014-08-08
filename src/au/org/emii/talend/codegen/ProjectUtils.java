@@ -39,7 +39,7 @@ public class ProjectUtils {
         File directory = new File(projectDir);
         
         String technicalName = getTechnicalName(directory);
-	System.out.println("technicalName: " + technicalName);
+	
         // If project exists in repository already, delete it
 //       	deleteIfExists(technicalName);
        	
@@ -47,6 +47,10 @@ public class ProjectUtils {
 	
         ArrayList fileSystemObjects = new ArrayList();
         ImportProjectsUtilities.getFilesForProject(fileSystemObjects, provider, directory);
+	
+	for(Object fileSystemObject : fileSystemObjects) {
+		System.out.println(provider.getFullPath(fileSystemObject));
+	}
 	
 	System.out.println(new File("/var/lib/jenkins/jobs/ETL-QuickEstimate-Models/workspace/etl-quick-estimate-models/workspace/QUICKESTIMATE/talend.project").length());
        	
@@ -59,7 +63,6 @@ public class ProjectUtils {
        	
         final IProject fsProject = ResourceUtils.getProject(technicalName);
         XmiResourceManager xmiManager = new XmiResourceManager();
-        System.out.println(new File("/var/lib/jenkins/jobs/ETL-QuickEstimate-Models/workspace/etl-quick-estimate-models/workspace/QUICKESTIMATE/talend.project").length());
         org.talend.core.model.properties.Project project = xmiManager.loadProject(fsProject);
         // do additional actions after importing projects
         AfterImportProjectUtil.runAfterImportProjectActions(new org.talend.core.model.general.Project(project));
