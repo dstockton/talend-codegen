@@ -56,7 +56,7 @@ public class Generator implements IApplication {
 
 	@Override
     public Object start(IApplicationContext context) throws Exception {
-		
+		System.out.println("START");
 		// Get details of job to export
 		String jobName = Params.getMandatoryStringOption("-jobName");
 		String projectDir = Params.getMandatoryStringOption("-projectDir");
