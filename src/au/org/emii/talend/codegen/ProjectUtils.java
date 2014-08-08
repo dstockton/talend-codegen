@@ -37,26 +37,26 @@ public class ProjectUtils {
     	
     public static Project importProject(String projectDir) throws InvocationTargetException, InterruptedException, PersistenceException, CoreException, BusinessException, IOException {
         File directory = new File(projectDir);
-        
+        System.out.println("P1");
         String technicalName = getTechnicalName(directory);
 
         // If project exists in repository already, delete it
 //       	deleteIfExists(technicalName);
        	
         IImportStructureProvider provider = FilterFileSystemStructureProvider.INSTANCE;
-
+	System.out.println("P2");
         ArrayList fileSystemObjects = new ArrayList();
         ImportProjectsUtilities.getFilesForProject(fileSystemObjects, provider, directory);
-
+	System.out.println("P3");
         ImportOperation operation = new ImportOperation(new Path(technicalName), directory, provider, new MyOverwriteQuery(), fileSystemObjects);
         operation.setOverwriteResources(true);
         operation.setCreateContainerStructure(false);
         operation.run(new NullProgressMonitor());
-        
+        System.out.println("P4");
         final IProject fsProject = ResourceUtils.getProject(technicalName);
         XmiResourceManager xmiManager = new XmiResourceManager();
         org.talend.core.model.properties.Project project = xmiManager.loadProject(fsProject);
-        
+        System.out.println("P5");
         // do additional actions after importing projects
         AfterImportProjectUtil.runAfterImportProjectActions(new org.talend.core.model.general.Project(project));
         
@@ -84,8 +84,9 @@ public class ProjectUtils {
 	// Get the specified talend project from the repository
 	private static Project getTalendProject(String technicalName) throws PersistenceException, BusinessException {
 		Project[] projects = ProxyRepositoryFactory.getInstance().readProject();
-		
+		System.out.println("P6");
 		for (Project project : projects) {
+			System.out.println("P7");
 			if (project.getTechnicalLabel().equals(technicalName)) {
 				return project;
 			}
