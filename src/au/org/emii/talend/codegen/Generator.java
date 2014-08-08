@@ -81,17 +81,17 @@ public class Generator implements IApplication {
         
        	// Copy project into workspace
        	project = ProjectUtils.importProject(projectDir);
-
+	System.out.println("1");
        	// Log on to project
        	log.info("Logging onto " + project.getLabel() + "...");
 
         repository.logOnProject(project, new NullProgressMonitor());
-        
+        System.out.println("2");
         //Initialise code generation engine
         log.info("Initialising code generation engine...");
 
         initCodeGenerationEngine();
-        
+        System.out.println("3");
         // Export the job
 		exportJob(jobName, targetDir, version, exportChoiceMap);
 
@@ -125,7 +125,7 @@ public class Generator implements IApplication {
 
 		// Get job to build
 		ProcessItem job = getJob(jobName, version);
-
+		System.out.println("4");
         // Create the job script manager that performs the build
 		JobJavaScriptsManager manager = new JobJavaScriptsManager(exportChoiceMap, "Default", "Unix", 
 				IProcessor.NO_STATISTICS, IProcessor.NO_TRACES);
@@ -136,7 +136,7 @@ public class Generator implements IApplication {
 		manager.setJobVersion(job.getProperty().getVersion());
 		manager.setBundleVersion(job.getProperty().getVersion());
 		manager.setProgressMonitor(null);
-		
+		System.out.println("5");
 		try {
 			List<ExportFileResource> resourcesToExport = generateExportResources(
 					job, job.getProperty().getVersion(), manager);
@@ -147,7 +147,7 @@ public class Generator implements IApplication {
 			 
 			// Add resources built to archive
 	        createArchive( tempZipFile.getAbsolutePath(), resourcesToExport );
-	        
+	        System.out.println("6");
 	        // Rebuild zip file to use classpath jar instead of including all jars in launch script
 	        ClasspathFixup fixup = new ClasspathFixup(manager);
 	         	          	       
