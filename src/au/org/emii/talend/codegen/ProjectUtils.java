@@ -48,15 +48,17 @@ public class ProjectUtils {
         ArrayList fileSystemObjects = new ArrayList();
         ImportProjectsUtilities.getFilesForProject(fileSystemObjects, provider, directory);
 	
-	for(Object fileSystemObject : fileSystemObjects) {
-		System.out.println(provider.getFullPath(fileSystemObject));
-	}
-	
-	System.out.println(new File("/var/lib/jenkins/jobs/ETL-QuickEstimate-Models/workspace/etl-quick-estimate-models/workspace/QUICKESTIMATE/talend.project").length());
+    	System.out.println(new File("/var/lib/jenkins/jobs/ETL-QuickEstimate-Models/workspace/etl-quick-estimate-models/workspace/QUICKESTIMATE/talend.project").length());
        	
         ImportOperation operation = new ImportOperation(new Path(technicalName), directory, provider, new MyOverwriteQuery(), fileSystemObjects);
+
+        System.out.println(new File("/var/lib/jenkins/jobs/ETL-QuickEstimate-Models/workspace/etl-quick-estimate-models/workspace/QUICKESTIMATE/talend.project").length());
+
         operation.setOverwriteResources(true);
         operation.setCreateContainerStructure(false);
+
+        System.out.println(new File("/var/lib/jenkins/jobs/ETL-QuickEstimate-Models/workspace/etl-quick-estimate-models/workspace/QUICKESTIMATE/talend.project").length());
+
         operation.run(new NullProgressMonitor());
         
         System.out.println(new File("/var/lib/jenkins/jobs/ETL-QuickEstimate-Models/workspace/etl-quick-estimate-models/workspace/QUICKESTIMATE/talend.project").length());

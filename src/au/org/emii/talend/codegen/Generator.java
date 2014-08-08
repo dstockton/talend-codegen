@@ -143,7 +143,7 @@ public class Generator implements IApplication {
 			
 			File tempZipFile = createTempFile(); 
 			 				 			  
-			manager.setTopFolder(resourcesToExport);
+			// manager.setTopFolder(resourcesToExport);
 			 
 			// Add resources built to archive
 	        createArchive( tempZipFile.getAbsolutePath(), resourcesToExport );
