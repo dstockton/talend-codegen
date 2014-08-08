@@ -39,7 +39,7 @@ public class ProjectUtils {
         File directory = new File(projectDir);
         
         String technicalName = getTechnicalName(directory);
-
+	System.out.println("technicalName: " + technicalName);
         // If project exists in repository already, delete it
 //       	deleteIfExists(technicalName);
        	
@@ -49,13 +49,12 @@ public class ProjectUtils {
         ImportProjectsUtilities.getFilesForProject(fileSystemObjects, provider, directory);
 	
         ImportOperation operation = new ImportOperation(new Path(technicalName), directory, provider, new MyOverwriteQuery(), fileSystemObjects);
-        operation.setOverwriteResources(false);
+        operation.setOverwriteResources(true);
         operation.setCreateContainerStructure(false);
         operation.run(new NullProgressMonitor());
         
         final IProject fsProject = ResourceUtils.getProject(technicalName);
         XmiResourceManager xmiManager = new XmiResourceManager();
-        System.out.println("P4");
         org.talend.core.model.properties.Project project = xmiManager.loadProject(fsProject);
         System.out.println("P5");
         // do additional actions after importing projects
