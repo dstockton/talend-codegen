@@ -49,7 +49,7 @@ public class ProjectUtils {
         ImportProjectsUtilities.getFilesForProject(fileSystemObjects, provider, directory);
 	
         ImportOperation operation = new ImportOperation(new Path(technicalName), directory, provider, new MyOverwriteQuery(), fileSystemObjects);
-        operation.setOverwriteResources(true);
+        operation.setOverwriteResources(false);
         operation.setCreateContainerStructure(false);
         operation.run(new NullProgressMonitor());
         
