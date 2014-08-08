@@ -43,18 +43,20 @@ public class ProjectUtils {
         // If project exists in repository already, delete it
 //       	deleteIfExists(technicalName);
        	
-       	System.out.println(new File("/var/lib/jenkins/jobs/ETL-QuickEstimate-Models/workspace/etl-quick-estimate-models/workspace/QUICKESTIMATE/talend.project").length());
-       	
         IImportStructureProvider provider = FilterFileSystemStructureProvider.INSTANCE;
 	
         ArrayList fileSystemObjects = new ArrayList();
         ImportProjectsUtilities.getFilesForProject(fileSystemObjects, provider, directory);
 	
+	System.out.println(new File("/var/lib/jenkins/jobs/ETL-QuickEstimate-Models/workspace/etl-quick-estimate-models/workspace/QUICKESTIMATE/talend.project").length());
+       	
         ImportOperation operation = new ImportOperation(new Path(technicalName), directory, provider, new MyOverwriteQuery(), fileSystemObjects);
         operation.setOverwriteResources(true);
         operation.setCreateContainerStructure(false);
         operation.run(new NullProgressMonitor());
         
+        System.out.println(new File("/var/lib/jenkins/jobs/ETL-QuickEstimate-Models/workspace/etl-quick-estimate-models/workspace/QUICKESTIMATE/talend.project").length());
+       	
         final IProject fsProject = ResourceUtils.getProject(technicalName);
         XmiResourceManager xmiManager = new XmiResourceManager();
         System.out.println(new File("/var/lib/jenkins/jobs/ETL-QuickEstimate-Models/workspace/etl-quick-estimate-models/workspace/QUICKESTIMATE/talend.project").length());
